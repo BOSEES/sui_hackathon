@@ -42,6 +42,7 @@ IconWidget.defaultProps = {
   bgColor: 'primary',
   icon: 'span',
   iconProps: { size: 50 },
+  
 };
 
 export default IconWidget;

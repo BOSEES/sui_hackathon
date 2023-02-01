@@ -5,7 +5,7 @@ import bg3Image from 'assets/img/bg/background_640-3.jpg';
 import user1Image from 'assets/img/users/100_1.jpg';
 import { UserCard } from 'components/Card';
 import Page from 'components/Page';
-import { bgCards, gradientCards, overlayCards } from 'demos/cardPage';
+// import { bgCards, gradientCards, overlayCards } from 'demos/CardPage';
 import { getStackLineChart, stackLineChartOptions } from 'demos/chartjs';
 import React from 'react';
 import { Line } from 'react-chartjs-2';
@@ -23,11 +23,53 @@ import {
   ListGroupItem,
   Row,
 } from 'reactstrap';
+import Games from "../assets/game-data/games.json"
+
+let games = Games.games.filter((game, index)=> {
+  const {status} = game;
+  
+  if(!status) {
+    return game
+  }
+});
+
+// games = 
 
 const CardPage = () => {
   return (
-    <Page title="Cards" breadcrumbs={[{ name: 'cards', active: true }]}>
+    <Page title="Audit" breadcrumbs={[{ name: 'Audit', active: true }]}>
       <Row>
+        {games.map((game, index) => {
+          const {game_id, title, description, icon, url, status} = game;
+          return (
+            <Col key={index} md={6} sm={6} xs={12} className="mb-3">
+              <Card
+                inverse
+                className={`border-0 bg-gradient-theme`}
+                style={{
+                  height: 200,
+                }}
+              >
+                <CardBody className="d-flex flex-column justify-content-start align-items-start">
+                  <CardTitle className="width-100%">{title}</CardTitle>
+                  <CardText>{description}</CardText>
+                </CardBody>
+
+                <CardBody className="d-flex justify-content-between align-items-center">
+                  <CardText>0xdaasdfhakjshdfkakjasjhdkajs</CardText>
+                  <Button outline color="light">
+                    Click
+                  </Button>
+                  <Button outline color="light">
+                    Confirm
+                  </Button>
+                </CardBody>
+              </Card>
+            </Col>
+          )  
+        })}
+      </Row>
+      {/* <Row>
         <Col md={6} sm={6} xs={12} className="mb-3">
           <Card className="flex-row">
             <CardImg
@@ -99,33 +141,7 @@ const CardPage = () => {
         </Col>
       </Row>
 
-      <Row>
-        {['', 'top', 'left', 'right'].map((color, index) => (
-          <Col key={index} md={6} sm={6} xs={12} className="mb-3">
-            <Card
-              inverse
-              className={`border-0 bg-gradient-theme${
-                !!color ? '-' : ''
-              }${color}`}
-              style={{
-                height: 200,
-              }}
-            >
-              <CardBody className="d-flex flex-column justify-content-start align-items-start">
-                <CardTitle>Card title</CardTitle>
-                <CardText>card text</CardText>
-              </CardBody>
-
-              <CardBody className="d-flex justify-content-between align-items-center">
-                <CardText>Karl David</CardText>
-                <Button outline color="light">
-                  Click
-                </Button>
-              </CardBody>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+      
 
       <Row>
         {overlayCards.map(({ imgUrl }, index) => {
@@ -218,7 +234,7 @@ const CardPage = () => {
             </Card>
           </Col>
         ))}
-      </Row>
+      </Row> */}
     </Page>
   );
 };

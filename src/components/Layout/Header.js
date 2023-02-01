@@ -3,7 +3,7 @@ import { UserCard } from 'components/Card';
 import Notifications from 'components/Notifications';
 import SearchInput from 'components/SearchInput';
 import { notificationsData } from 'demos/header';
-import withBadge from 'hocs/withBadge';
+import { IconWidget } from 'components/Widget';
 import React from 'react';
 import {
   MdClearAll,
@@ -32,18 +32,18 @@ import bn from 'utils/bemnames';
 
 const bem = bn.create('header');
 
-const MdNotificationsActiveWithBadge = withBadge({
-  size: 'md',
-  color: 'primary',
-  style: {
-    top: -10,
-    right: -10,
-    display: 'inline-flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  children: <small>5</small>,
-})(MdNotificationsActive);
+// const MdNotificationsActiveWithBadge = withBadge({
+//   size: 'md',
+//   color: 'primary',
+//   style: {
+//     top: -10,
+//     right: -10,
+//     display: 'inline-flex',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+//   children: <small>5</small>,
+// })(MdNotificationsActive);
 
 class Header extends React.Component {
   state = {
@@ -82,8 +82,8 @@ class Header extends React.Component {
       <Navbar light expand className={bem.b('bg-white')}>
         <Nav navbar className={bem.e('nav-right')}>
           <NavItem className="d-inline-flex">
-            {/* <NavLink id="Popover1" className="position-relative">
-              {isNotificationConfirmed ? (
+            <NavLink id="Popover1" className="position-relative">
+              {/* {isNotificationConfirmed ? (
                 <MdNotificationsNone
                   size={25}
                   className="text-secondary can-click"
@@ -95,11 +95,17 @@ class Header extends React.Component {
                   className="text-secondary can-click animated swing infinite"
                   onClick={this.toggleNotificationPopover}
                 />
-              )}
-            </NavLink> */}
+              )} */}
+            </NavLink>
+            {/* <IconWidget 
+              // bgColor={bgColor}
+                // icon={icon}
+                title="0x58b5e58c4d149442b1920f75c2451c596c241bd3441cda3e5b05f12409054063"
+                /> */}
             {/* 지갑주소 */}
           </NavItem>
         </Nav>
+        
       </Navbar>
     );
   }

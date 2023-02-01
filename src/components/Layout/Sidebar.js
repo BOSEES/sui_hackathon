@@ -3,7 +3,7 @@ import sidebarBgImage from 'assets/img/sidebar/sidebar-4.jpg';
 import SourceLink from 'components/SourceLink';
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
-import games from "../../assets/game-data/games.json"
+import Games from "../../assets/game-data/games.json"
 import {
   MdAccountCircle,
   MdArrowDropDownCircle,
@@ -37,6 +37,8 @@ import {
   NavLink as BSNavLink,
 } from 'reactstrap';
 import bn from 'utils/bemnames';
+
+
 
 const sidebarBackground = {
   backgroundImage: `url("${sidebarBgImage}")`,
@@ -88,21 +90,25 @@ const sidebarBackground = {
 // ];
 
 const navItems = [
-  { to: '/', name: 'dashboard', exact: true, Icon: MdDashboard },
-  { to: '/cards', name: 'examination', exact: false, Icon: MdWeb },
+  { to: '/', name: 'Dashboard', exact: true, Icon: MdDashboard },
+  // { to: '/CardPage', name: 'Audit', exact: false, Icon: MdWeb },
   // { to: '/charts', name: 'charts', exact: false, Icon: MdInsertChart },
   // { to: '/widgets', name: 'widgets', exact: false, Icon: MdWidgets },
 ];
 
-const navComponents = games.games.map((index, game) => {
-  const {game_id, title, description, icon, url, status} = game;
-  return {
-    to: `/game/${game_id}`,
-    name: `${title}`,
-    exact:false,
-    Icon: MdRadioButtonChecked
+var navComponents = []
+for (let i = 0; i < Games.games.length; i++) {
+  const {game_id, title, description, icon, url, status} = Games.games[i];
+  if (status == true) {
+    navComponents.push({
+      id: `game_id`,
+      to: `/game/${game_id}`,
+      name: `${title}`,
+      exact:false,
+      Icon: MdRadioButtonChecked
+    })
   }
-})
+}
 
 const bem = bn.create('sidebar');
 
@@ -127,19 +133,25 @@ class Sidebar extends React.Component {
     return (
       <aside className={bem.b()} data-image={sidebarBgImage}>
         <div className={bem.e('background')} style={sidebarBackground} />
-        <div className={bem.e('content')}>
+        <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between"}} className={bem.e('content')}>
+          <div>
           <Navbar>
             <SourceLink className="navbar-brand d-flex">
-              <img
+              {/* <img
                 src={logo200Image}
                 width="40"
                 height="30"
                 className="pr-2"
                 alt=""
-              />
-              <span className="text-white">
-                Gamestation <FaGithub />
-              </span>
+              /> */}
+              <div>
+                <div style={{fontSize: "40px"}} className="text-white">
+                  Gamestation
+                </div>
+                <div className="text-white">
+                  Developer Center
+                </div>
+              </div>
             </SourceLink>
           </Navbar>
           <Nav vertical>
@@ -147,7 +159,7 @@ class Sidebar extends React.Component {
               <NavItem key={index} className={bem.e('nav-item')}>
                 <BSNavLink
                   id={`navItem-${name}-${index}`}
-                  className="text-uppercase"
+                  // className="text-uppercase"
                   tag={NavLink}
                   to={to}
                   activeClassName="active"
@@ -166,7 +178,7 @@ class Sidebar extends React.Component {
               <BSNavLink className={bem.e('nav-item-collapse')}>
                 <div className="d-flex">
                   <MdExtension className={bem.e('nav-item-icon')} />
-                  <span className=" align-self-start">Games</span>
+                  <span style={{fontSize:"25px"}} className="align-self-start">Games</span>
                 </div>
                 <MdKeyboardArrowDown
                   className={bem.e('nav-item-icon')}
@@ -181,8 +193,8 @@ class Sidebar extends React.Component {
                 />
               </BSNavLink>
             </NavItem>
-          <Collapse isOpen={this.state.isOpenComponents}>
-              {navComponents.map(({ to, name, exact, Icon }, index) => (
+            <Collapse isOpen={this.state.isOpenComponents}>
+              {navComponents.map(({id, to, name, exact, Icon }, index) => (
                 <NavItem key={index} className={bem.e('nav-item')}>
                   <BSNavLink
                     id={`navItem-${name}-${index}`}
@@ -192,12 +204,52 @@ class Sidebar extends React.Component {
                     activeClassName="active"
                     exact={exact}
                   >
-                    <Icon className={bem.e('nav-item-icon')} />
-                    <span className="">{name}</span>
+                    <div style={{marginLeft:"20px"}}>
+                      <Icon className={bem.e('nav-item-icon')} />
+                      <span style={{fontSize:"20px", fontColor:"#ffffff"}} className="">{name}</span>
+                    </div>
                   </BSNavLink>
                 </NavItem>
               ))}
             </Collapse>
+          </div>
+          <div style={{
+            display:"flex",
+            justifyContent:"center",
+            alignItems:"center",
+          }}> 
+            <div style={{
+              display:"flex",
+              justifyContent:"center",
+              alignItems:"center",
+              border:"solid 2px",
+              borderRadius:"20px",
+              width:"90%",
+            }}>
+              <div style={{
+                  width:"10px",
+                  height:"10px",
+                  backgroundColor:"#C69749",
+                  borderRadius:"50%",
+                }}>
+              </div>
+              <div style={{
+                display:"flex",
+                padding:"5px",
+                width:"70%",
+                textAlign:"center",
+                textOverflow:"ellipsis",
+                overflow:"hidden",
+                whiteSpace:"nowrap",
+                fontFamily:"Poppins",
+                fontWeight:400,
+                margin:"5px",
+                marginLeft:"5px"
+                }}>
+                0x58b5e58c4d149442b1920f75c2451c596c241bd3441cda3e5b05f12409054063
+              </div>
+            </div>
+          </div>
         </div>
       </aside>
     );

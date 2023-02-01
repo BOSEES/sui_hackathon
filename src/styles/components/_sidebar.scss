@@ -14,7 +14,8 @@
   background-position: center center;
   background-size: cover;
   transition: left 0.1s ease-in;
-
+  
+  padding:20px;
   + .cr-content {
     transition: margin 0.1s ease-in;
   }
@@ -39,13 +40,13 @@
   &::after {
     z-index: 3;
     // sublime light
-    background: #fc5c7d; /* fallback for old browsers */
-    background: linear-gradient(to bottom, #6a82fb, #fc5c7d);
+    // background: #fc5c7d; /* fallback for old browsers */
+    background: linear-gradient(to bottom, #19191a, #19191a);
     opacity: 1;
   }
 
   &[data-image]:after {
-    opacity: 0.77;
+    opacity: 1;
   }
 
   &__content {
@@ -115,6 +116,7 @@
       // @include media-breakpoint-down(md) {
       //   padding: .5rem;
       // }
+      font-size: 25px;
       color: theme-color(light);
 
       &:hover {

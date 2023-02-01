@@ -2,51 +2,51 @@
     "games": [
         {
             "game_id":1,
-            "title": 2048,
+            "title": "Clumsy Bird",
             "description": "descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription",
             "icon":"png",
             "url":"https://asdasd.com",
             "status": true
         },
         {
-            "game_id":1,
-            "title": 2048,
+            "game_id":2,
+            "title": "2048",
             "description": "descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription",
             "icon":"png",
             "url":"https://asdasd.com",
             "status": true
         },
         {
-            "game_id":1,
+            "game_id":3,
             "title": 2048,
             "description": "descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription",
             "icon":"png",
             "url":"https://asdasd.com",
-            "status": true
+            "status": false
         },
         {
-            "game_id":1,
+            "game_id":4,
             "title": 2048,
             "description": "descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription",
             "icon":"png",
             "url":"https://asdasd.com",
-            "status": true
+            "status": false
         },
         {
-            "game_id":1,
+            "game_id":5,
             "title": 2048,
             "description": "descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription",
             "icon":"png",
             "url":"https://asdasd.com",
-            "status": true
+            "status": false
         },
         {
-            "game_id":1,
+            "game_id":6,
             "title": 2048,
             "description": "descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription",
             "icon":"png",
             "url":"https://asdasd.com",
-            "status": true
+            "status": false
         }
     ]
 }

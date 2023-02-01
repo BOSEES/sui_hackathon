@@ -2,7 +2,7 @@
   .nav-link {
     display: flex;
     align-items: center;
-
+    font-size: 30px;
     &.active {
       color: #fff;
       background: rgba(255, 255, 255, .23);
@@ -16,7 +16,8 @@
 }
 
 .card-header {
-  text-transform: uppercase;
+  // text-transform: uppercase;
+  font-weight: 800;
 }
 
 .badge:empty {
